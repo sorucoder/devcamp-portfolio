@@ -5,6 +5,8 @@
 		<h2><%= portfolio_item.title %></h2>
 		<h3><%= portfolio_item.subtitle %></h3>
 	</hgroup>
-	<img src=<%= portfolio_item.thumb_image %>/>
+	<% if !portfolio_item.thumb_image.nil? %>
+		<img src=<%= portfolio_item.thumb_image %>/>
+	<% end %>
 	<p><%= portfolio_item.body %></p>
 <% end %>
