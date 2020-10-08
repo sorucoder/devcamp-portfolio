@@ -59,4 +59,4 @@ gem 'jquery-rails'
 
 gem 'bootstrap', '~> 4.0.0'
 
-gem 'sorucoder_view_tool', git: 'https://github.com/sorucoder/sorucoder_view_tool'
+gem 'sorucoder_view_tool', '~>0.1.0'

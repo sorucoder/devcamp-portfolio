@@ -17,6 +17,6 @@ module ApplicationHelper
   end
 
   def copyright_helper
-    SoruCoderViewTool::Renderer.copyright('Marcus "SoruCoder" Germano, IV', 'All rights reserved.')
+    SorucoderViewTool::Renderer.copyright('Marcus "SoruCoder" Germano, IV', 'All rights reserved.')
   end
 end
