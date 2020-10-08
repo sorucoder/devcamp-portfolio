@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/sorucoder/sorucoder_view_tool
+  revision: 3fb26d3d158f0568de5f691ad6f27761292eb6d4
+  specs:
+    sorucoder_view_tool (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -200,6 +206,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.7)
   sass-rails (~> 5.0)
+  sorucoder_view_tool!
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
