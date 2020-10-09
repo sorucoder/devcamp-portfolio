@@ -15,15 +15,13 @@
 
   <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <%= render "shared/application_nav" %>
-
-      <%= login_helper %>
+      <%= render "shared/application_header" %>
 
       <%= yield %>
 
-      <%= source_helper('application') %>
+      <%= render "shared/application_footer" %>
 
-      <%= copyright_helper %>
+      <%= source_helper('application') %>
     </div>
   </body>
 </html>
