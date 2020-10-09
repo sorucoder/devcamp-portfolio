@@ -1,13 +1,24 @@
 <main role="main" class="inner cover">
   <h1 class="cover-heading">Contact Me</h1>
-  <p class="lead">
-	  <address>
-	  	Marcus E. W. Germano, IV<br/>
-	  	310 7th Street, Apt 2<br/>
-	  	Altoona, PA 16602<br/>
-	  	<br/>
-	  	Phone: <%= link_to "(814) 631-0533", "tel:+1814-631-0533" %><br/>
-	  	Email: <%= link_to "sorucoder@gmail.com", "mailto:sorucoder@gmail.com" %><br/>
-	  </address>
-	</p>
+  <div class="row">
+  	<div class="col-md-6">
+  		<h3>My Address</h3>
+  		<p>
+				<address>
+					310 7th Street, Apartment 2<br/>
+					Altoona, PA 16602
+				</address>
+			</p>
+
+			<h3>Phone</h3>
+			<p><%= number_to_phone "8146310533" %></p>
+
+			<h3>Email</h3>
+			<p><%= link_to "sorucoder@gmail.com", "mailto:sorucoder@gmail.com?subject=PortfolioContact" %></p>
+		</div>
+
+		<div class="col-md-6">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d189.8235297017828!2d-78.39242539978501!3d40.514474300152486!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89cb91f37d25da63%3A0x3d049b81f9d7e385!2s310%207th%20St%2C%20Altoona%2C%20PA%2016602!5e1!3m2!1sen!2sus!4v1602286499842!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+		</div>
+  </div>
  </main>
