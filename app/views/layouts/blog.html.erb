@@ -17,15 +17,17 @@
 
     <%= render "shared/blog_nav" %>
 
-    <%= render "shared/blog_header" %>
+    <main role="main">
+      <%= render "shared/blog_header" %>
 
-    <main role="main" class="container">
-      <div class="row">
+      <section class="container">
+        <div class="row">
 
-        <%= yield %>
+          <%= yield %>
 
-        <%= render "shared/blog_sidebar" %>
-      </div>
+          <%= render "shared/blog_sidebar" %>
+        </div>
+      </section>
     </main>
 
     <%= render "shared/blog_footer" %>

@@ -1,4 +1,4 @@
-<div class="blog-post">
+<article class="blog-post">
 	<h2 class="blog-post-title"><%= link_to blog.title.upcase, blog %></h2>
 	<p class="blog-post-meta">Written <%= distance_of_time_in_words(blog.created_at, Time.now) %> ago</p>
 	<% if logged_in?(:site_admin) %>
@@ -12,4 +12,4 @@
 	<p>
 		<%= blog.body %> 
 	</p>
-</div>
+</article>
