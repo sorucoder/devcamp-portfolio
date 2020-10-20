@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container portfolio-container">
 	<div class="row">
 		<div class="col-md-7">
 			<%= image_tag portfolio_image_helper(@portfolio_item.main_image, :main), width: '100%' %>
@@ -12,14 +12,23 @@
 
 			<p><%= @portfolio_item.body %></p>
 
-			<h2>Technologies Used</h2>
+			<h3>Technologies Used</h3>
 
 			<ul class="list-group technologies-list">
 				<% @portfolio_item.technologies.each do |technology| %>
-					<li class="list-group-item
-					"><%= technology.name %></li>
+					<li class="list-group-item"><%= technology.name %></li>
 				<% end %>
 			</ul>
 		</div>
+
+		<% if logged_in?(:site_admin) %>
+			<div class="col-md-12">
+				<div class="button-group">
+					<%= link_to "Edit Portfolio Item", edit_portfolio_path(@portfolio_item), class: "btn btn-warning" %> 
+					<%= link_to "Delete Portfolio Item", @portfolio_item, method: :delete, data: { confirm: "Are you sure?" }, class: "
+					btn btn-danger" %>
+				</div>
+			</div>
+		<% end %>
 	</div>
 </div>
