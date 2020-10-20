@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-7">
-			<%= image_tag @portfolio_item.main_image, width: '100%' %>
+			<%= image_tag portfolio_image_helper(@portfolio_item.main_image, :main), width: '100%' %>
 		</div>
 		<div class="col-md-5">
 			<hgroup class="portfolio-title">
@@ -23,5 +23,3 @@
 		</div>
 	</div>
 </div>
-
-
