@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "gritter";
 
 /*
  * Globals
@@ -142,7 +143,7 @@ body {
   -moz-transform: translateX(-50%) translateY(-50%);
   -ms-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
-  background-image: image-url('countryside.jpg');
+  background-image: image-url('harddrive.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
