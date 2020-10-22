@@ -73,4 +73,14 @@ module ApplicationHelper
     "active" if current_page?(path)
   end
 
+  def alerts
+    alert = flash[:alert] || flash[:error] || flash[:notice]
+    if alert
+      alert_helper(alert)
+    end
+  end
+
+  def alert_helper(message)
+    js add_gritter(message, title: "Marcus Germano, IV Portfolio", sticky: false)
+  end
 end

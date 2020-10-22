@@ -1,47 +1,57 @@
-<%= form_for(@portfolio_item) do |form| %>
+<%= form_for(@portfolio_item) do |f| %>
+  <% if @portfolio_item.errors.any? %>
+    <% @portfolio_item.errors.full_messages.each do |message| %>
+      <%= alert_helper(message) %>
+    <% end %>
+  <% end %>
+
+  <h3>General Information</h3>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <%= form.label :title %>
-        <%= form.text_field :title, class: "form-control" %>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
       </div>
 
       <div class="form-group">
-      	<%= form.label :subtitle %>
-      	<%= form.text_field :subtitle, class: "form-control" %>
+      	<%= f.label :subtitle %>
+      	<%= f.text_field :subtitle, class: "form-control" %>
       </div>
 
       <div class="form-group">
         <label class="btn btn-secondary">
-          Upload Main Image <%= form.file_field :main_image, style: "display: none;" %>
+          Upload Main Image <%= f.file_field :main_image, style: "display: none;" %>
         </label>
       </div>
 
       <div class="form-group">
         <label class="btn btn-secondary">
-          Upload Thumbnail Image <%= form.file_field :thumb_image, style: "display: none;" %>
+          Upload Thumbnail Image <%= f.file_field :thumb_image, style: "display: none;" %>
         </label>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <%= form.label :body %>
-        <%= form.text_area :body, class: "form-control", rows: 15 %>
+        <%= f.label :body %>
+        <%= f.text_area :body, class: "form-control", rows: 15 %>
       </div>
     </div>
+
+    <hr>
+
     <div class="col-md-12">
-      <ul class="list-group">
-      <%= form.fields_for :technologies do |technology_form| %>
-        <li class="list-group-item form-group">
-          <%= technology_form.label :name %>
-          <%= technology_form.text_field :name, class: "form-control" %>
-        </li>
+      <h3>Technologies Used</h3>
+      
+      <%= f.fields_for :technologies do |technology_form| %>
+        <%= render "technology_fields", f: technology_form %>
       <% end %>
-    </ul>
+
+      <div class="form-group">
+        <%= link_to_add_association "Add Technology", f, :technologies %>
+      </div>
     </div>
   </div>
-
   <div class="form-group">
-    <%= form.submit class: "btn btn-primary btn-block" %>
+    <%= f.submit class: "btn btn-primary btn-block" %>
   </div>
 <% end %>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   get 'angular', to: 'portfolios#angular_items'
   get 'rails', to: 'portfolios#rails_items'
-  get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio_show'
+  get 'portfolios/:id', to: 'portfolios#show', as: 'portfolio_show'
 
   get 'about-me', to: 'pages#about'
   get 'contact', to: 'pages#contact'
