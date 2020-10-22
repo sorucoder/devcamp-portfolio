@@ -27,5 +27,8 @@ module DevcampPortfolio
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Eagerly load modules from the lib directory
+    config.eager_load_paths << "#{Rails.root}/lib/"
   end
 end
