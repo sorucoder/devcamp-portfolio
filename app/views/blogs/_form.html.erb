@@ -1,7 +1,7 @@
 <%= form_with(model: blog, local: true) do |form| %>
   <% if blog.errors.any? %>
     <% blog.errors.full_messages.each do |message| %>
-      <%= js add_gritter(message, title: "Marcus Germano, IV Portfolio", sticky: false) %>
+      <%= alert_helper(message) %>
     <% end %>
   <% end %>
 
