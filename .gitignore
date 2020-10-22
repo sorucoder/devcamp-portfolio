@@ -18,6 +18,9 @@
 
 .byebug_history
 
+# Hide todo list for prying eyes :)
+todo.md
+
 # Hide secrets
 /config/secrets.yml
 .env

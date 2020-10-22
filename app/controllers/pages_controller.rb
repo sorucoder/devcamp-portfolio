@@ -11,6 +11,6 @@ class PagesController < ApplicationController
   end
 
   def tech_news
-    @tweets = SocialTool.twitter_search('#rubyonrails')
+    @tweets = SocialTool.twitter_search('#coding')
   end
 end
