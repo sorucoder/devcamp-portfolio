@@ -68,7 +68,7 @@ module ApplicationHelper
           title: "New Blog Post"
         },
         {
-          url: -> (id) { blogs(id) },
+          url: -> (id) { blogs_path(id) },
           title: :title
         }
       ]
