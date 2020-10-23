@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
+  get 'topic/new'
+
+  get 'topic/create'
+
+  get 'topic/destroy'
+
+  resources :topics, except: [:update]
+
   resources :comments
+
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
+  
   resources :portfolios, except: [:show] do
     put :sort, on: :collection
   end
-  get 'angular', to: 'portfolios#angular_items'
-  get 'rails', to: 'portfolios#rails_items'
+  
   get 'portfolios/:id', to: 'portfolios#show', as: 'portfolio_show'
 
   get 'about-me', to: 'pages#about'

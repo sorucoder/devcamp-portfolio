@@ -1,5 +1,5 @@
 class Topic < ApplicationRecord
-  validates_presence_of :title
+  validates :title, presence: true, uniqueness: { message: "already matches an existing topic" }
 
   has_many :blogs
 end

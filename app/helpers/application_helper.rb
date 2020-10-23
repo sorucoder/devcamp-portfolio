@@ -6,15 +6,19 @@ module ApplicationHelper
 
   def page_title_items
     {
-      %r{^devise/[a-z_]+$} => [
+      registrations: [
         {
           url: new_user_registration_path,
           title: "Sign Up"
-        },
+        }
+      ],
+      sessions: [
         {
           url: new_user_session_path,
           title: "Log In"
-        },
+        }
+      ],
+      passwords: [
         {
           url: new_user_password_path,
           title: "Forgot Your Password?"
@@ -91,7 +95,8 @@ module ApplicationHelper
       # viewing a blog, where ids may overlap. Anyhow, if the controller doesn't match,
       # skip to the next controller collection.
       if controller.is_a?(Regexp)
-        next unless controller =~ controller_name
+        byebug
+        next unless controller.match?(controller_name)
       else
         next unless controller.to_s == controller_name
       end

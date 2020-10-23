@@ -13,4 +13,8 @@ class Blog < ApplicationRecord
   def self.recent
     order("created_at DESC")
   end
+
+  def self.by_topic(topic_id)
+    where(topic_id: topic_id)
+  end
 end

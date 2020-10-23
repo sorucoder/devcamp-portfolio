@@ -1,6 +1,8 @@
 <div class="col-sm-8 blog-main">
   <h2 class="blog-post-title"><%= @blog.title %></h2>
+  
   <p class="blog-post-meta">Written <%= distance_of_time_in_words(@blog.created_at, Time.now) %> ago</p> 
+  
   <% if logged_in?(:site_admin) %>
   	<p class="blog-post-meta">
   		<%= link_to @blog.status.capitalize, toggle_status_blog_path(@blog) %> / 
@@ -8,9 +10,10 @@
 			<%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
   	</p>
   <% end %>
+
   <p><%= @blog.body %></p>
 
-  <hr/>
+  <hr />
 
   <%= render "comments/comment_form" %>
 
