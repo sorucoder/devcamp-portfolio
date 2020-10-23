@@ -8,8 +8,13 @@
 			<%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
   	</p>
   <% end %>
+  <p><%= @blog.body %></p>
 
-  <p>
-  	<%= @blog.body %>
-  </p>
+  <hr/>
+
+  <%= render "comments/comment_form" %>
+
+  <div id="comments" data-blog-id="<%= @blog.id %>">
+    <%= render @blog.comments %>
+  </div>
 </div>
