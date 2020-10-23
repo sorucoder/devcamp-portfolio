@@ -1,4 +1,9 @@
 module ApplicationHelper
+  def get_record()
+    model = controller_name.classify.constantize
+    model.find(params[:id])
+  end
+
   def page_title_items
     {
       %r{^devise/[a-z_]+$} => [
@@ -30,14 +35,11 @@ module ApplicationHelper
         },
         {
           url: -> (id) { edit_portfolio_path(id) },
-          title: {
-            generator: -> (title) { "Edit Portfolio Item \"#{title}\"" },
-            param: :title
-          }
+          title: -> { "Edit Portfolio Item \"#{@portfolio_item.title}\"" }
         },
         {
           url: -> (id) { portfolio_show_path(id) },
-          title: :title
+          title: -> { @portfolio_item.title }
         }
       ],
       pages: [
@@ -68,15 +70,20 @@ module ApplicationHelper
           title: "New Blog Post"
         },
         {
+          url: -> (id) { edit_blog_path(id) },
+          title: -> { "Edit Blog \"#{@blog.title}\"" }
+        },
+        {
           url: -> (id) { blogs_path(id) },
-          title: :title
-        }
+          title: -> { @blog.title }
+        },
+
       ]
     }
   end
 
   def page_title_helper
-    page_title_items.each do |controller, items|
+    page_title_items.each do |controller, pages|
       # Determine if the current page by controller. This is to avoid, for example,
       # getting the title for the home page, but check if we are viewing a portfolio
       # item (in which the home page doesn't have an id parameter, in which would cause
@@ -84,40 +91,29 @@ module ApplicationHelper
       # viewing a blog, where ids may overlap. Anyhow, if the controller doesn't match,
       # skip to the next controller collection.
       if controller.is_a?(Regexp)
-        next unless controller =~ params[:controller]
+        next unless controller =~ controller_name
       else
-        next unless controller.to_s == params[:controller]
+        next unless controller.to_s == controller_name
       end
 
-      # Now we can check each path, and map it to its correct title.
-      items.each do |item|
-        url = nil
-        if item[:url].is_a?(Proc)
-          url = item[:url].call(params[:id])
-        else
-          url = item[:url]
-        end
-
-        title = nil
-        if item[:title].is_a?(Symbol)
-          title = "#{params[item[:title]]} | Marcus Germano, IV"
-        elsif item[:title].is_a?(Hash)
-          title = "#{item[:title][:generator].call(params[item[:title][:param]])} | Marcus Germano, IV"
-        else
-          title = "#{item[:title]} | Marcus Germano, IV"
+      # Now we can check each page, and map it to its correct title.
+      pages.each do |page|
+        url = page[:url]
+        if page[:url].is_a?(Proc)
+          url = url.call(params[:id])
         end
 
         if current_page?(url)
-          return title
+          if page[:title].is_a?(Proc)
+            return "#{page[:title].call()} | Marcus Germano, IV"
+          else
+            return "#{page[:title]} | Marcus Germano, IV"
+          end
         end
       end
     end
     "Marcus Germano, IV"
   end
-
-
-  #   end
-  # end
 
   def source_helper(layout_name)
     if session[:source]
