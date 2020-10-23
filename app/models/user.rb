@@ -18,10 +18,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def first_name
-    self.name.split.first
+    self.name.split(%r{\s+}, 2).first
   end
 
   def last_name
-    self.name.split.last
+    self.name.split(%r{\s+}, 2).last
   end
 end
