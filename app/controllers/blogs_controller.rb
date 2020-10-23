@@ -11,7 +11,6 @@ class BlogsController < ApplicationController
     else
       @blogs = Blog.published.recent.page(params[:page]).per(5)
     end
-    @page_title = 'Blogs | Marcus Germano, IV'
   end
 
   # GET /blogs/1
@@ -20,8 +19,6 @@ class BlogsController < ApplicationController
     if logged_in?(:site_admin) || @blog.published?   
       @blog = Blog.includes(:comments).friendly.find(params[:id])
       @comment = Comment.new
-      @page_title = "#{@blog.title} | Marcus Germano, IV"
-      @seo_keywords = @blog.body
     else
       redirect_to blogs_path, notice: "You are not authorized to access this page"
     end
@@ -30,12 +27,10 @@ class BlogsController < ApplicationController
   # GET /blogs/new
   def new
     @blog = Blog.new
-    @page_title = 'New Blog | Marcus Germano, IV'
   end
 
   # GET /blogs/1/edit
   def edit
-    @page_title = "Edit #{@blog.title} | Marcus Germano, IV"
   end
 
   # POST /blogs
@@ -90,6 +85,6 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit(:title, :body)
+      params.require(:blog).permit(:title, :body, :topic_id)
     end
 end

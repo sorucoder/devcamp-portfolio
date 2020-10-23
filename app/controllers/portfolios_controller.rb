@@ -26,7 +26,6 @@ class PortfoliosController < ApplicationController
 
   def new
     @portfolio_item = Portfolio.new
-    @page_title = "New Portfolio Item | Marcus Germano, IV"
   end
 
   def create
@@ -42,7 +41,6 @@ class PortfoliosController < ApplicationController
   end
 
   def edit
-    @page_title = "Edit #{@portfolio_item.title} | Marcus Germano, IV"
   end
 
   def update
@@ -56,7 +54,6 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-    @page_title = "#{@portfolio_item} | Marcus Germano, IV"
   end
 
   def destroy
