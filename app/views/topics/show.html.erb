@@ -3,6 +3,9 @@
 		<h2 class="blog-post-title"><%= @topic.title %></h2>
 		<p class="blog-post-meta">
 			<%= link_to "Back To Topics", topics_path %>
+			<% if logged_in?(:site_admin) %>
+				 / <%= link_to "Delete This Topic", @topic, method: :delete, data: { confirm: "Are you sure?" } %>
+			<% end %>
 		</p>
 		
 		<%= paginate @blogs %>

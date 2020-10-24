@@ -3,12 +3,19 @@
     <h4>About</h4>
     <p>This page is dedicated to my more personal interests, hobbies, and life events, outside of programming. These blogs may contain content that may be considered controversial. If you find that some content is not your cup of tea, you are welcome to leave a comment. Just remember to keep it constructive and have an open mind.</p>
   </div>
-  <div class="sidebar-module">
+  <div class="sidebar-module sidebar-module-inset">
+    <h4>Explore</h4>
+    <ul class="list-unstyled">
+      <li><%= link_to "All Blogs", blogs_path %></li>
+      <li><%= link_to "By Topic", topics_path %></li>
+    </ul>
+  </div>
+  <div class="sidebar-module sidebar-module-inset">
     <h4>Elsewhere</h4>
-    <ol class="list-unstyled social-links">
-      <li><%= link_to fa_icon("github"), "https://github.com/sorucoder" %></li>
-      <li><%= link_to fa_icon("facebook"), "https://www.facebook.com/marcus.germano/" %></li>
-      <li><%= link_to fa_icon("twitter"), "https://twitter.com/GermanoMarcus" %></li>
-    </ol>
+    <ul class="list-unstyled list-inline social-links">
+      <li class="list-inline-item"><%= link_to fa_icon("github"), "https://github.com/sorucoder" %></li>
+      <li class="list-inline-item"><%= link_to fa_icon("facebook"), "https://www.facebook.com/marcus.germano/" %></li>
+      <li class="list-inline-item"><%= link_to fa_icon("twitter"), "https://twitter.com/GermanoMarcus" %></li>
+    </ul>
   </div>
 </aside>

@@ -28,24 +28,6 @@ module ApplicationHelper
           title: "Recover Your Password?"
         },
       ],
-      portfolios: [
-        {
-          url: portfolios_path,
-          title: "My Portfolio"
-        },
-        {
-          url: new_portfolio_path,
-          title: "New Portfolio Item"
-        },
-        {
-          url: -> (id) { edit_portfolio_path(id) },
-          title: -> { "Edit Portfolio Item \"#{@portfolio_item.title}\"" }
-        },
-        {
-          url: -> (id) { portfolio_show_path(id) },
-          title: -> { @portfolio_item.title }
-        }
-      ],
       pages: [
         {
           url: about_me_path,
@@ -80,9 +62,40 @@ module ApplicationHelper
         {
           url: -> (id) { blogs_path(id) },
           title: -> { @blog.title }
+        }
+      ],
+      topics: [
+        {
+          url: topics_path,
+          title: "SoruCoder's Blog — By Topic"
         },
-
-      ]
+        {
+          url: new_topic_path,
+          title: "New Topic"
+        },
+        {
+          url: -> (id) { topic_path(id) },
+          title: -> { "SoruCoder's Blog — #{@topic.title}" }
+        }
+      ],
+      portfolios: [
+        {
+          url: portfolios_path,
+          title: "My Portfolio"
+        },
+        {
+          url: new_portfolio_path,
+          title: "New Portfolio Item"
+        },
+        {
+          url: -> (id) { edit_portfolio_path(id) },
+          title: -> { "Edit Portfolio Item \"#{@portfolio_item.title}\"" }
+        },
+        {
+          url: -> (id) { portfolio_show_path(id) },
+          title: -> { @portfolio_item.title }
+        }
+      ],
     }
   end
 
