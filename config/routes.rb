@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'topic/new'
-
-  get 'topic/create'
-
-  get 'topic/destroy'
-
   resources :topics, except: [:update]
 
   resources :comments
