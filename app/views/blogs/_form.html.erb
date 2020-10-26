@@ -1,4 +1,4 @@
-<%= form_with(model: blog, local: true) do |f| %>
+<%= form_with(model: blog) do |f| %>
   <% if blog.errors.any? %>
     <% blog.errors.full_messages.each do |message| %>
       <%= alert_helper(message) %>
@@ -18,7 +18,7 @@
             :id,
             :title,
             {
-              selected: blog.topic.id,
+              selected: blog.topic_id,
               include_blank: true,
             },
             class: "form-control"

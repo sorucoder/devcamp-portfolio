@@ -74,7 +74,7 @@ module ApplicationHelper
           title: "New Topic"
         },
         {
-          url: -> (id) { topic_path(id) },
+          url: -> (id) { topics_path(id) },
           title: -> { "SoruCoder's Blog — #{@topic.title}" }
         }
       ],

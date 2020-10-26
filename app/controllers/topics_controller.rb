@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :destroy]
+  before_action :set_topic, only: [:show, :destroy]
+  before_action :set_sidebar_topics, except: [:create, :destroy]
   layout 'blog'
   access all: [:show, :index], user: {except: [:new, :edit, :create, :destroy]}, site_admin: :all
 
@@ -18,9 +19,6 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
-  end
-
-  def edit
   end
 
   def create
@@ -50,5 +48,9 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:title)
+  end
+
+  def set_sidebar_topics
+    @side_bar_topics = Topic.with_blogs
   end
 end

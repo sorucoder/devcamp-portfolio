@@ -4,10 +4,13 @@
     <p>This page is dedicated to my more personal interests, hobbies, and life events, outside of programming. These blogs may contain content that may be considered controversial. If you find that some content is not your cup of tea, you are welcome to leave a comment. Just remember to keep it constructive and have an open mind.</p>
   </div>
   <div class="sidebar-module sidebar-module-inset">
-    <h4>Explore</h4>
-    <ul class="list-unstyled">
-      <li><%= link_to "All Blogs", blogs_path %></li>
-      <li><%= link_to "By Topic", topics_path %></li>
+    <h4>Topics</h4>
+    <ul class="list-unstyled" id="sidebar-topic-list">
+      <% @side_bar_topics.each do |topic| %>
+        <li>
+          <%= sidebar_topic_helper(topic) %>
+        </li>
+      <% end %>
     </ul>
   </div>
   <div class="sidebar-module sidebar-module-inset">

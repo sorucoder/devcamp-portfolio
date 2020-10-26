@@ -200,11 +200,19 @@ h6, .h6 {
   font-size: 1.5em;
 }
 
-.topic-list {
+#topic-list {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.25em;
 }
 
-.topic-list a:hover {
+#topic-list a:hover {
   text-decoration: none;
-} 
+}
+
+#sidebar-topic-list {
+  padding-left: 20px;
+}
+
+#sidebar-topic-list .active {
+  font-weight: bold;
+}
