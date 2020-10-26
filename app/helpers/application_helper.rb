@@ -74,7 +74,7 @@ module ApplicationHelper
           title: "New Topic"
         },
         {
-          url: -> (id) { topics_path(id) },
+          url: -> (id) { topic_path(id) },
           title: -> { "SoruCoder's Blog — #{@topic.title}" }
         }
       ],
@@ -108,7 +108,6 @@ module ApplicationHelper
       # viewing a blog, where ids may overlap. Anyhow, if the controller doesn't match,
       # skip to the next controller collection.
       if controller.is_a?(Regexp)
-        byebug
         next unless controller.match?(controller_name)
       else
         next unless controller.to_s == controller_name

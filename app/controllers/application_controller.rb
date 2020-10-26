@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include SetSource
   include CurrentUserConcern
   include DefaultPageContent
+  include SidebarTopicsConcern
 
   before_action :set_copyright
 
