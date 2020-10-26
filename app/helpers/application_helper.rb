@@ -60,7 +60,7 @@ module ApplicationHelper
           title: -> { "Edit Blog \"#{@blog.title}\"" }
         },
         {
-          url: -> (id) { blogs_path(id) },
+          url: -> (id) { blog_path(id) },
           title: -> { @blog.title }
         }
       ],
