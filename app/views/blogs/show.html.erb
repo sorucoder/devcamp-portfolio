@@ -10,8 +10,12 @@
 			<%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
   	</p>
   <% end %>
+  
+  <hr />
 
-  <p><%= @blog.body %></p>
+  <section class="blog-body">
+    <%= markdown @blog.body %>
+  </section>
 
   <hr />
 
