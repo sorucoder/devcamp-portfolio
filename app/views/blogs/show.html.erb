@@ -3,14 +3,14 @@
   <nav class="breadcrumb">
     <%= link_to "Home", root_path, class: "breadcrumb-item" %>
     <%= link_to @blog.topic.title, topic_path(@blog.topic), class: "breadcrumb-item" %>
-    <span class="breadcrumb-item"><%= @blog.title %></span>
+    <span class="breadcrumb-item admin-links">
+      <%= @blog.title %>
 
-    <% if logged_in?(:site_admin) %>
-      <span class="ml-auto">
-        <%= link_to fa_icon("edit"), edit_blog_path(@blog) %> 
-        <%= link_to fa_icon("trash"), @blog, method: :delete, data: { confirm: "Are you sure?" } %>
-      </span>
-    <% end %>
+      <% if logged_in?(:site_admin) %>
+        <%= link_to fa_icon("edit"), edit_blog_path(@blog), class: "ml-auto", style: "padding: 0 4px;" %> 
+        <%= link_to fa_icon("trash"), @blog, method: :delete, data: { confirm: "Are you sure?" }, style: "padding: 0 4px;" %>
+      <% end %>
+    </span>
   </nav>
   <p class="blog-post-meta">Written <%= distance_of_time_in_words(@blog.created_at, Time.now) %> ago</p>
   
