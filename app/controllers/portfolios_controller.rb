@@ -5,7 +5,7 @@ class PortfoliosController < ApplicationController
 
   def index
     @portfolio_items = Portfolio.by_position
-    @page_title = "Portfolio | Marcus Germano, IV"
+    @page_title = "My Portfolio | Marcus Germano, IV Portfolio"
   end
 
   def sort
@@ -26,6 +26,7 @@ class PortfoliosController < ApplicationController
 
   def new
     @portfolio_item = Portfolio.new
+    @page_title = "New Portfolio Item | Marcus Germano, IV Portfolio"
   end
 
   def create
@@ -41,6 +42,7 @@ class PortfoliosController < ApplicationController
   end
 
   def edit
+    @page_title = "Edit #{@portfolio_item.title} | Marcus Germano, IV Portfolio"
   end
 
   def update

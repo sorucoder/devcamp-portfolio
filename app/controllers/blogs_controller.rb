@@ -12,6 +12,7 @@ class BlogsController < ApplicationController
     else
       @blogs = Blog.published.recent.page(params[:page]).per(5)
     end
+    @page_title = "SoruCoder's Blog | Marcus Germano, IV Portfolio"
   end
 
   # GET /blogs/1
@@ -20,6 +21,7 @@ class BlogsController < ApplicationController
     if logged_in?(:site_admin) || @blog.published?   
       @blog = Blog.includes(:comments).friendly.find(params[:id])
       @comment = Comment.new
+      @page_title = "SoruCoder's Blog — \"#{@blog.title}\" | Marcus Germano, IV Portfolio"
     else
       redirect_to blogs_path, notice: "You are not authorized to access this page"
     end
@@ -28,10 +30,12 @@ class BlogsController < ApplicationController
   # GET /blogs/new
   def new
     @blog = Blog.new
+    @page_title = "New Blog Post | Marcus Germano, IV Portfolio"
   end
 
   # GET /blogs/1/edit
   def edit
+    @page_title = "Edit \"#{@blog.title}\" | Marcus Germano, IV Portfolio"
   end
 
   # POST /blogs
