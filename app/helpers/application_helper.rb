@@ -4,10 +4,23 @@ module ApplicationHelper
     model.find(params[:id])
   end
 
-  def source_helper(layout_name)
+  def friendly_source_name(source)
+    sources = {
+      "facebook" => "Facebook",
+      "twitter" =>  "Twitter",
+      "github" => "GitHub"
+    }
+    if sources.key?(source)
+      sources[source]
+    else
+      "the Internet" # What else could it be?
+    end
+  end
+
+  def source_helper(tag_classes)
     if session[:source]
-      greeting = "Thanks for visiting me from #{session[:source]} and you are #{layout_name} layout"
-      content_tag(:p, greeting, class: 'source-greeting')
+      greeting = "Thanks for visiting me from #{friendly_source_name(session[:source])}! Please feel free to #{link_to("contact me", contact_path)} to get in touch about future oppurtunities and the like!"
+      content_tag(:div, greeting.html_safe, class: tag_classes)
     end
   end
 
@@ -44,34 +57,34 @@ module ApplicationHelper
     ]
   end
 
-  def nav_helper(styleClass, parentTag: nil)
+  def nav_helper(tag_classes, parent_tag: nil)
     nav_links = ''
     
-    if parentTag.nil?
+    if parent_tag.nil?
       # Normal navigation links
       nav_items.each do |item|
-        nav_links << "<a href=\"#{item[:url]}\" class=\"#{styleClass} #{active?(item[:url])}\">#{item[:title]}</a>"
+        nav_links << "<a href=\"#{item[:url]}\" class=\"#{tag_classes} #{active?(item[:url])}\">#{item[:title]}</a>"
       end
 
       # Devise links
       if current_user.is_a?(GuestUser)
-        nav_links << "<a href=\"#{new_user_registration_path}\" class=\"#{styleClass}\">Sign Up</a>"
-        nav_links << "<a href=\"#{new_user_session_path}\" class=\"#{styleClass}\">Log In</a>"
+        nav_links << "<a href=\"#{new_user_registration_path}\" class=\"#{tag_classes}\">Sign Up</a>"
+        nav_links << "<a href=\"#{new_user_session_path}\" class=\"#{tag_classes}\">Log In</a>"
       else
-        nav_links << "<a href=\"#{destroy_user_session_path}\" data-method=\"delete\" class=\"#{styleClass}\">Log Out</a>"
+        nav_links << "<a href=\"#{destroy_user_session_path}\" data-method=\"delete\" class=\"#{tag_classes}\">Log Out</a>"
       end
     else
       # Normal navigation links
       nav_items.each do |item|
-        nav_links << "<#{parentTag}><a href=\"#{item[:url]}\" class=\"#{styleClass} #{active?(item[:url])}\">#{item[:title]}</a></#{parentTag}>"
+        nav_links << "<#{parent_tag}><a href=\"#{item[:url]}\" class=\"#{tag_classes} #{active?(item[:url])}\">#{item[:title]}</a></#{parent_tag}>"
       end
 
       # Devise links
       if current_user.is_a?(GuestUser)
-        nav_links << "<#{parentTag}><a href=\"#{new_user_registration_path}\" class=\"#{styleClass}\">Sign Up</a></#{parentTag}>"
-        nav_links << "<#{parentTag}><a href=\"#{new_user_session_path}\" class=\"#{styleClass}\">Log In</a></#{parentTag}>"
+        nav_links << "<#{parent_tag}><a href=\"#{new_user_registration_path}\" class=\"#{tag_classes}\">Sign Up</a></#{parent_tag}>"
+        nav_links << "<#{parent_tag}><a href=\"#{new_user_session_path}\" class=\"#{tag_classes}\">Log In</a></#{parent_tag}>"
       else
-        nav_links << "<#{parentTag}><a href=\"#{destroy_user_session_path}\" data-method=\"delete\" class=\"#{styleClass}\">Log Out</a></#{parentTag}>"
+        nav_links << "<#{parent_tag}><a href=\"#{destroy_user_session_path}\" data-method=\"delete\" class=\"#{tag_classes}\">Log Out</a></#{parent_tag}>"
       end
     end
 
