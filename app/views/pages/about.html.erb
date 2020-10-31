@@ -5,6 +5,14 @@
 		<div class="row">
 			<div class="col-md-4">
 				<%= image_tag "sorucoder.png", alt: "Profile picture", class: "profile-image" %>
+				<div class="skills">
+					<% @skills.each do |skill| %>
+						<h4><%= skill.title %></h4>
+						<div class="progress">
+							<div class="progress-bar progress-bar-striped bg-primary" role="progressbar" aria-valuenow="<%= skill.percent_utilized%>" aria-valuemin="0" aria-valuemax="100" style="width: <%= skill.percent_utilized %>%;"></div>
+						</div>
+					<% end %>
+				</div>
 			</div>
 			<div class="col-md-8">
 	  		<p class="lead">My name is Marcus E. W. Germano, IV. I go by the username "SoruCoder" on the Internet. I currently reside  in Altoona, Pennsylvania, but I know the Lord has great plans for my life.</p>

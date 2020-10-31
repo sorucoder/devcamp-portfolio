@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 
   def about
   	@page_title = "About Me | Marcus Germano, IV Portfolio"
+    @skills = Skill.all.order("title ASC")
   end
 
   def contact
