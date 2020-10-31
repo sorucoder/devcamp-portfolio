@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :destroy]
-  before_action :set_sidebar_topics, except: [:create, :destroy]
+  before_action :set_sidebar_topics, except: [:destroy]
   layout 'blog'
   access all: [:show, :index], user: {except: [:new, :edit, :create, :destroy]}, site_admin: :all
 
