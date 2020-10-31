@@ -1,6 +1,9 @@
 <footer class="text-muted">
   <div class="container">
     <p class="float-right">
+    	<% if logged_in?(:site_admin) %>
+    		<%= link_to "Create A New Portfolio Item", new_portfolio_path %> /
+    	<% end %> 
     	<%= link_to "View All Portfolio Items", portfolios_path %> / 
       <a href="#">Back to top</a>
     </p>
