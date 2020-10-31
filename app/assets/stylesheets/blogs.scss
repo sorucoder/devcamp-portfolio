@@ -2,6 +2,16 @@
 @import "font-awesome";
 @import "gritter";
 
+@font-face {
+  font-family: 'Incosolata';
+  src: font-url('Incosolata-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: font-url('Merriweather-Regular.ttf');
+}
+
 /*
  * Globals
  */
@@ -13,7 +23,7 @@
 }
 
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: 'Incosolata', monospace;
   color: #555;
 }
 
@@ -23,7 +33,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Merriweather', serif;
   font-weight: normal;
   color: #333;
 }
