@@ -1,0 +1,16 @@
+<%= form_for(@topic) do |f| %>
+  <% if @topic.errors.any? %>
+    <% @topic.errors.full_messages.each do |message| %>
+      <%= alert_helper(message) %>
+    <% end %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, id: :topic_title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

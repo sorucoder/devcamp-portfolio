@@ -1,2 +1,10 @@
 @import "bootstrap";
 @import "gritter";
+
+.gritter-item .gritter-title {
+  font-size: 1.75em;
+}
+
+.gritter-item p {
+  font-size: 1.5em;
+}

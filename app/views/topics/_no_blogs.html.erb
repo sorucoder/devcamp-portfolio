@@ -1,0 +1,9 @@
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1>Thank You, Blog Reader.</h1>
+		<p class="lead">But your blog is on another page.</p>
+		<hr class="my-4">
+		<%= link_to "Back To Topics", topics_path, class: "btn btn-primary btn-large" %>
+		<%= link_to "Delete This Topic", topic_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-large" if logged_in?(:site_admin) %>
+	</div>
+</div>

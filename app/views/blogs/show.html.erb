@@ -1,20 +1,30 @@
-<div class="col-sm-8 blog-main">
+<main role="main" class="col-sm-8 blog-main">
   <h2 class="blog-post-title"><%= @blog.title %></h2>
-  <p class="blog-post-meta">Written <%= distance_of_time_in_words(@blog.created_at, Time.now) %> ago</p> 
-  <% if logged_in?(:site_admin) %>
-  	<p class="blog-post-meta">
-  		<%= link_to @blog.status.capitalize, toggle_status_blog_path(@blog) %> / 
-		  <%= link_to 'Edit', edit_blog_path(@blog) %> / 
-			<%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
-  	</p>
-  <% end %>
-  <p><%= @blog.body %></p>
+  <nav class="breadcrumb">
+    <%= link_to "Home", root_path, class: "breadcrumb-item" %>
+    <%= link_to @blog.topic.title, topic_path(@blog.topic), class: "breadcrumb-item" %>
+    <span class="breadcrumb-item admin-links">
+      <%= @blog.title %>
 
-  <hr/>
+      <% if logged_in?(:site_admin) %>
+        <%= link_to fa_icon("edit"), edit_blog_path(@blog), class: "ml-auto", style: "padding: 0 4px;" %> 
+        <%= link_to fa_icon("trash"), @blog, method: :delete, data: { confirm: "Are you sure?" }, style: "padding: 0 4px;" %>
+      <% end %>
+    </span>
+  </nav>
+  <p class="blog-post-meta">Written <%= distance_of_time_in_words(@blog.created_at, Time.now) %> ago</p>
+  
+  <hr />
+
+  <section class="blog-body">
+    <%= markdown @blog.body %>
+  </section>
+
+  <hr />
 
   <%= render "comments/comment_form" %>
 
   <div id="comments" data-blog-id="<%= @blog.id %>">
     <%= render @blog.comments %>
   </div>
-</div>
+</main>

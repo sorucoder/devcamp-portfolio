@@ -1,4 +1,4 @@
-<%= form_with(model: blog, local: true) do |form| %>
+<%= form_with(model: blog) do |f| %>
   <% if blog.errors.any? %>
     <% blog.errors.full_messages.each do |message| %>
       <%= alert_helper(message) %>
@@ -6,14 +6,45 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.text_field :title, id: :blog_title, placeholder: "Title", class: 'form-control' %>
+    <%= f.label :title %>
+    <%= f.text_field :title, id: :blog_title, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.text_area :body, id: :blog_body, placeholder: "Content", class: 'form-control', rows: 15 %>
+    <%= f.label :topic_id %>
+    <%= f.collection_select(
+            :topic_id,
+            Topic.all,
+            :id,
+            :title,
+            {
+              selected: blog.topic_id,
+              include_blank: true,
+            },
+            class: "form-control"
+    ) %>
   </div>
 
   <div class="form-group">
-    <%= form.submit class: 'btn btn-primary' %>
+    <%= f.label :status, "Status" %>
+    <div id="blog_status">
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :status, "draft", id: "blog_status_draft", class: "form-check-input" %>
+        <%= f.label "status_draft", "Draft", class: "form-check-label" %>
+      </div>
+      <div class="form-check form-check-inline">
+       <%= f.radio_button :status, "published", id: "blog_status_published", class: "form-check-input" %>
+       <%= f.label "status_published", "Published", class: "form-check-label" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, id: :blog_body, class: 'form-control', rows: 15 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

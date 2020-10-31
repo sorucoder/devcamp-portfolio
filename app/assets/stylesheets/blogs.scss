@@ -2,6 +2,16 @@
 @import "font-awesome";
 @import "gritter";
 
+@font-face {
+  font-family: 'Incosolata';
+  src: font-url('Incosolata-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: font-url('Merriweather-Regular.ttf');
+}
+
 /*
  * Globals
  */
@@ -13,7 +23,7 @@
 }
 
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: 'Incosolata', monospace;
   color: #555;
 }
 
@@ -23,7 +33,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Merriweather', serif;
   font-weight: normal;
   color: #333;
 }
@@ -92,7 +102,7 @@ h6, .h6 {
 }
 .blog-title {
   margin-bottom: 0;
-  font-size: 2rem;
+  font-size: 3.25rem;
   font-weight: normal;
 }
 .blog-description {
@@ -102,8 +112,12 @@ h6, .h6 {
 
 @media (min-width: 40em) {
   .blog-title {
-    font-size: 3.5rem;
+    font-size: 3.75rem;
   }
+}
+
+.topic-title {
+  font-size: 3rem;
 }
 
 
@@ -114,7 +128,7 @@ h6, .h6 {
 /* Sidebar modules for boxing content */
 .sidebar-module {
   padding: 1rem;
-  /*margin: 0 -1rem 1rem;*/
+  margin: 0 -1rem 1rem;
 }
 .sidebar-module-inset {
   padding: 1rem;
@@ -146,7 +160,7 @@ h6, .h6 {
 }
 .blog-post-title {
   margin-bottom: .25rem;
-  font-size: 2.5rem;
+  font-size: 2.75rem;
 }
 .blog-post-meta {
   margin-bottom: 1.25rem;
@@ -190,4 +204,33 @@ h6, .h6 {
 
 .comment-user-name {
   font-weight: 600;
+}
+
+.gritter-item .gritter-title {
+  font-size: 1.75em;
+}
+
+.gritter-item p {
+  font-size: 1.5em;
+}
+
+#topic-list {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.25em;
+}
+
+#topic-list a:hover {
+  text-decoration: none;
+}
+
+#sidebar-topic-list {
+  padding-left: 20px;
+}
+
+#sidebar-topic-list .active {
+  font-weight: bold;
+}
+
+.admin-links a {
+  padding: 0 5px;
 }
