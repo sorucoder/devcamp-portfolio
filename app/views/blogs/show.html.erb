@@ -1,4 +1,4 @@
-<div class="col-sm-8 blog-main">
+<main role="main" class="col-sm-8 blog-main">
   <h2 class="blog-post-title"><%= @blog.title %></h2>
   <nav class="breadcrumb">
     <%= link_to "Home", root_path, class: "breadcrumb-item" %>
@@ -27,4 +27,4 @@
   <div id="comments" data-blog-id="<%= @blog.id %>">
     <%= render @blog.comments %>
   </div>
-</div>
+</main>
