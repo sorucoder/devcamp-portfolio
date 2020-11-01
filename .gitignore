@@ -24,3 +24,6 @@ todo.md
 # Hide secrets
 /config/secrets.yml
 .env
+
+# Hide development environment uploads
+/public/uploads/**
