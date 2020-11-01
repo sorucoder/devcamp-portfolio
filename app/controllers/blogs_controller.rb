@@ -46,7 +46,6 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: 'Blog post was successfully created.' }
-        end
       else
         format.html { render :new }
       end
