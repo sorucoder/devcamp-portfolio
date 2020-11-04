@@ -13,6 +13,10 @@ module BlogsHelper
     def block_code(code, language)
       CodeRay.scan(code, language).div
     end
+
+    def block_quote(quote)
+      %(<blockquote class="blockquote">#{quote}</blockquote>)
+    end
   end
 
   def markdown(text)
