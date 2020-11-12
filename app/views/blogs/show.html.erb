@@ -7,9 +7,9 @@
   </nav>
 
   <div class="blog-control">
-    <span class="blog-post-meta">Written <%= distance_of_time_in_words(@blog.created_at, Time.now) %> ago</span> | 
+    <span class="blog-post-meta">Written <%= distance_of_time_in_words(@blog.created_at, Time.now) %> ago</span>
 
-    <% if logged_in?(:site_admin) %>
+    <% if logged_in?(:site_admin) %> | 
       <span class="blog-control-group">
         <%= link_to fa_icon("file-text"), toggle_status_blog_path(@blog), class: "blog-control-group-item", style: blog_status_color_helper(@blog) %>
         <%= link_to fa_icon("edit"), edit_blog_path(@blog), class: "ml-auto", class: "blog-control-group-item", style: "padding: 0 4px;" %> 
@@ -17,7 +17,7 @@
       </span>
     <% end %>
 
-    <% unless current_user.is_a?(GuestUser) %>
+    <% unless current_user.is_a?(GuestUser) %> | 
       <span class="blog-control-group">
         <%= link_to fa_icon("thumbs-up"), like_blog_path(@blog), class: "blog-control-group-item", style: like_color_helper(@blog) %>
         <%= @blog.get_likes.size %>

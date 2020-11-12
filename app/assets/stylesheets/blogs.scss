@@ -219,10 +219,6 @@ h6, .h6 {
   font-weight: bold;
 }
 
-.blog-control-group:not(:last-child)::after {
-  content: " | ";
-}
-
 .blog-control-group-item {
   padding: 0 5px;
 }
@@ -239,10 +235,6 @@ h6, .h6 {
 
 .comment-user-name {
   font-weight: 600;
-}
-
-.comment-control-group:not(:last-child)::after {
-  content: " | ";
 }
 
 .comment-control-group-item {
