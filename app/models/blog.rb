@@ -10,6 +10,8 @@ class Blog < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  acts_as_votable
+
   def self.recent
     order("created_at DESC")
   end

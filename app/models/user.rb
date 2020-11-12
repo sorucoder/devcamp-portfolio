@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  acts_as_voter
+
   def first_name
     self.name.split(%r{\s+}, 2).first
   end

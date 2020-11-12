@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status, :like, :dislike]
   before_action :set_sidebar_topics, except: [:destroy, :toggle_status]
   layout 'blog'
   access all: [:show, :index], user: {except: [:new, :create, :update, :edit, :destroy]}, site_admin: :all
@@ -82,6 +82,14 @@ class BlogsController < ApplicationController
     redirect_to blogs_url, notice: 'Blog post status has been updated.'
   end
 
+  def like
+    toggle_like @blog
+  end
+
+  def dislike
+    toggle_dislike @blog
+  end
+  
   private
   
   # Use callbacks to share common setup or constraints between actions.

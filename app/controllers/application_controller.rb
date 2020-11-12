@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
   include DefaultPageContent
   include SidebarTopicsConcern
   include CopyrightMessageConcern
+  include VotableToggleConcern
 end

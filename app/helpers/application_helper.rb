@@ -17,6 +17,22 @@ module ApplicationHelper
     end
   end
 
+  def like_color_helper(votable)
+    if current_user.voted_for?(votable) && current_user.liked?(votable)
+      "color: blue;"
+    else
+      "color: gray;"
+    end
+  end
+
+  def dislike_color_helper(votable)
+    if current_user.voted_for?(votable) && current_user.disliked?(votable)
+      "color: red;"
+    else
+      "color: gray;"
+    end
+  end
+
   def source_helper(tag_classes)
     if session[:source]
       greeting = "Thanks for visiting me from #{friendly_source_name(session[:source])}! Please feel free to #{link_to("contact me", contact_path)} to get in touch about future oppurtunities and the like!"

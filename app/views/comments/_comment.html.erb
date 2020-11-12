@@ -9,10 +9,19 @@
           <div>
             <%= comment.content %>
           </div>
-
           <div class="comment-attribution">
             Comment posted by <span class="comment-user-name"><%= comment.user.name %></span> <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago
           </div>
+          <% unless current_user.is_a?(GuestUser) %>
+            <div class="comment-controls">
+              <span class="comment-control-group">
+                <%= link_to fa_icon("thumbs-up"), like_comment_path(comment), class: "comment-control-group-item", style: like_color_helper(comment) %>
+                <%= comment.get_likes.size %>
+                <%= link_to fa_icon("thumbs-down"), dislike_comment_path(comment), class: "comment-control-group-item", style: dislike_color_helper(comment) %>
+                <%= comment.get_dislikes.size %>
+              </span>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
