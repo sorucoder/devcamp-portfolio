@@ -2,10 +2,12 @@
   <div class="container">
     <h1 class="blog-title">SoruCoder's Blog</h1>
     <p class="lead blog-description">Tasty foods for thought. Cook's not always in the kitchen though.</p>
-    <% if logged_in?(:site_admin) %>
-    	<%= link_to "Write A New Blog", new_blog_path %> / 
-    	<%= link_to "Create A New Topic", new_topic_path %>
-    <% end %>
-    <%= link_to "Browse Topics", topics_path %>
+  </div>
+  <div class="container">
+  	<%= link_to "Browse Blogs By Topics", topics_path %>
+  	<% if logged_in?(:site_admin) %> /
+  		<%= link_to "Create New Blog", new_blog_path %> / 
+  		<%= link_to "Create New Topic", new_topic_path %>
+  	<% end %>
   </div>
 </header>
